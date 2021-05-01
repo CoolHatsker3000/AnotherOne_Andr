@@ -153,7 +153,7 @@ public class CreateTicketActivity extends AppCompatActivity {
         try {
             //Uri uri = Uri.fromFile(new File(imageUri));
             InputStream stream = getContentResolver().openInputStream(imageUri);//new FileInputStream(new File(imageUri));
-            final StorageReference toSave = storageRef.child(fUser.getUid()).child(ticket.id).child(ticket.id + System.currentTimeMillis());
+            final StorageReference toSave = storageRef.child(ticket.id).child(ticket.id + System.currentTimeMillis());
             UploadTask ut = toSave.putStream(stream);
             Task<Uri> task = ut.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
@@ -165,7 +165,7 @@ public class CreateTicketActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Uri> task) {
                     Log.d("URLD: ",task.getResult().toString());
                     ticket.imageUrls.add(task.getResult().toString());
-                    databaseReference.child(mAuth.getUid()).child(ticket.id).child("imageUrls").setValue(ticket.imageUrls);
+                    databaseReference.child(ticket.id).child("imageUrls").setValue(ticket.imageUrls);
                 }
             });
         } catch (FileNotFoundException e) {
