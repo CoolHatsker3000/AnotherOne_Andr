@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0D96CC</color>
+    <color name="colorPrimaryDark">#005875</color>
+    <color name="colorAccent">#D8A21B</color>
+
+    <color name="colorTicketOpen">#858585</color>
+    <color name="colorTicketAccepted">#0066FF</color>
+    <color name="colorTicketAssessment">#824CFF</color>
+    <color name="colorTicketInProgress">#FFB700</color>
+    <color name="colorTicketCompleted">#0CB11C</color>
+    <color name="colorTicketClosed">#191919</color>
+    <color name="colorTicketAir">#EC2E2E</color>
+    <color name="fabButtonColor">#F19C1B</color>
+</resources>

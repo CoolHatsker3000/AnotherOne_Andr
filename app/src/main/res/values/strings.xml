@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">НИР</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Попов Александр</string>
+    <string name="nav_header_subtitle">М19-ИСТ-3</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Настройки</string>
+    <string name="action_logout">Выйти</string>
+
+
+    <string name="menu_opened">Открытые обращения</string>
+    <string name="menu_air">Требуется инфомрация</string>
+    <string name="menu_all">Все обращения</string>
+    <string name="menu_resolved">Закрытые обращения</string>
+    <string name="menu_profile">Профиль</string>
+
+    <!--<string name="menu_send">Send</string>-->
+
+    <string name="create_ticket_name_hint">заголовок</string>
+    <string name="create_ticket_descr_hint">описание</string>
+    <string name="create_ticket_button_text">создать</string>
+    <string name="create_ticket_button_image">добавить фото</string>
+
+    <string name="login_password_field_hint">пароль</string>
+    <string name="login_email_field_hint">электронная почта</string>
+    <string name="login_name_field_hint">ваше имя</string>
+    <string name="login_sec_name_field_hint">ваша фамилия</string>
+
+    <string name="reg_password_field_hint">пароль</string>
+    <string name="reg_email_field_hint">ваша электронная почта</string>
+    <string name="reg_name_field_hint">ваше имя</string>
+    <string name="reg_sec_name_field_hint">ваша фамилия</string>
+    <string name="reg_button_text">зарегистрироваться</string>
+
+    <string name="map_button">выбрать место</string>
+    <string name="map_hint">отметьте маркером</string>
+
+
+</resources>

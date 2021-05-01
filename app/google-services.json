@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "270096253238",
+    "firebase_url": "https://diplomtest1-8f630-default-rtdb.firebaseio.com",
+    "project_id": "diplomtest1-8f630",
+    "storage_bucket": "diplomtest1-8f630.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270096253238:android:23296545fa3eebd658f397",
+        "android_client_info": {
+          "package_name": "com.tryone.dyplomtest1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "270096253238-sv6dvvjhv18n827ol72kmegsi19bh55k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_NE5Gd_-qkm4Vn4k6oCrZMGTgHchzM5Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "270096253238-sv6dvvjhv18n827ol72kmegsi19bh55k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
