@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ArrayAdapter<String> adapter;
     private TicketsArrayAdapter ticketsAdapter;
     private ListView lvTickets;
-    private int category=R.id.nav_all;
+    private int category=R.id.nav_all,minStatus=0,maxStatus=7;
     private List<Ticket> tickets;
     private ValueEventListener vListener;
     private Query query;
@@ -114,7 +114,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onStart() {
         super.onStart();
-        query=FirebaseDatabase.getInstance().getReference(Constants.TICKETS_KEY).child(mAuth.getCurrentUser().getUid());
+        //query=FirebaseDatabase.getInstance().getReference(Constants.TICKETS_KEY).child(mAuth.getCurrentUser().getUid());
+        query=FirebaseDatabase.getInstance().getReference(Constants.TICKETS_KEY).orderByChild("uid").equalTo(mAuth.getCurrentUser().getUid());
 
         vListener=new ValueEventListener() {
             @Override
@@ -123,7 +124,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 for (DataSnapshot ds : snapshot.getChildren()){
                     Ticket ticket=ds.getValue(Ticket.class);
                     assert ticket!=null;
-                    tickets.add(ticket);
+                    if (ticket.status>=minStatus && ticket.status<maxStatus){
+                        tickets.add(ticket);
+                    }
                 }
                 ticketsAdapter.notifyDataSetChanged();
             }
@@ -133,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             }
         };
+        //query.addListenerForSingleValueEvent(vListener);
         query.addListenerForSingleValueEvent(vListener);
     }
 
@@ -148,16 +152,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         category=menuItem.getItemId();
         if (category==R.id.nav_all){
             //fillList(id);
-            query=FirebaseDatabase.getInstance().getReference(Constants.TICKETS_KEY).child(mAuth.getCurrentUser().getUid());
+            /*query=FirebaseDatabase.getInstance().getReference(Constants.TICKETS_KEY).child(mAuth.getCurrentUser().getUid());
+            query.addListenerForSingleValueEvent(vListener);*/
+            minStatus=0;
+            maxStatus=7;
+            query.removeEventListener(vListener);
             query.addListenerForSingleValueEvent(vListener);
         } else if (category==R.id.nav_opened){
-            query=FirebaseDatabase.getInstance().getReference(Constants.TICKETS_KEY).child(mAuth.getCurrentUser().getUid()).orderByChild("status").startAt(0).endAt(4);
+            /*query=FirebaseDatabase.getInstance().getReference(Constants.TICKETS_KEY).child(mAuth.getCurrentUser().getUid()).orderByChild("status").startAt(0).endAt(4);
+            query.addListenerForSingleValueEvent(vListener);*/
+            minStatus=0;
+            maxStatus=5;
+            query.removeEventListener(vListener);
             query.addListenerForSingleValueEvent(vListener);
         } else if (category==R.id.nav_air){
-            query=FirebaseDatabase.getInstance().getReference(Constants.TICKETS_KEY).child(mAuth.getCurrentUser().getUid()).orderByChild("status").equalTo(6);
+            /*query=FirebaseDatabase.getInstance().getReference(Constants.TICKETS_KEY).child(mAuth.getCurrentUser().getUid()).orderByChild("status").equalTo(6);
+            query.addListenerForSingleValueEvent(vListener);*/
+            minStatus=6;
+            maxStatus=7;
+            query.removeEventListener(vListener);
             query.addListenerForSingleValueEvent(vListener);
         } else if (category==R.id.nav_resolved){
-            query=FirebaseDatabase.getInstance().getReference(Constants.TICKETS_KEY).child(mAuth.getCurrentUser().getUid()).orderByChild("status").equalTo(5);
+            /*query=FirebaseDatabase.getInstance().getReference(Constants.TICKETS_KEY).child(mAuth.getCurrentUser().getUid()).orderByChild("status").equalTo(5);
+            query.addListenerForSingleValueEvent(vListener);*/
+            minStatus=5;
+            maxStatus=6;
+            query.removeEventListener(vListener);
             query.addListenerForSingleValueEvent(vListener);
         }
         drawer.closeDrawer(GravityCompat.START);

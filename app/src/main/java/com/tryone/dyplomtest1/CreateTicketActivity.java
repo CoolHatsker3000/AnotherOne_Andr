@@ -127,7 +127,8 @@ public class CreateTicketActivity extends AppCompatActivity {
                 localityReference.child(String.valueOf(adminArea.hashCode())).child(String.valueOf(locality.hashCode())).setValue(locality);
             }
         }
-        DatabaseReference toPush=databaseReference.child(fUser.getUid()).push();//.setValue(ticket);
+        //DatabaseReference toPush=databaseReference.child(fUser.getUid()).push();//.setValue(ticket);
+        DatabaseReference toPush=databaseReference.push();
         ticket.id=toPush.getKey();
         toPush.setValue(ticket);
         for (Uri imageUri: uriList){
